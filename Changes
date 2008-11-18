@@ -1,0 +1,5 @@
+Revision history for Perl extension Config::KeyValue
+
+0.01    20081118 11:17
+        * First version of Config::KeyValue, a module for reading simple configuration files.
+

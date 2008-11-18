@@ -1,0 +1,7 @@
+# Sample configuration file
+simple_key=simple_value
+
+one_key=multiple values
+
+trailing_comment=trailing comment value # ignore 
+
