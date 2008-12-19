@@ -4,7 +4,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME                => 'Config::KeyValue',
-    AUTHOR              => 'blair christensen <blair@devclue.com>',
+    AUTHOR              => 'blair christensen <blair.christensen@gmail.com>',
     VERSION_FROM        => 'lib/Config/KeyValue.pm',
     ABSTRACT_FROM       => 'lib/Config/KeyValue.pm',
     ($ExtUtils::MakeMaker::VERSION >= 6.3002

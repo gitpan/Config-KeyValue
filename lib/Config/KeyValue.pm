@@ -6,15 +6,15 @@ use Carp qw(croak);
 
 =head1 NAME
 
-Config::KeyValue - read simple "KEY=VALUE" formatted configuration files.
+Config::KeyValue - Module for reading simple "KEY=VALUE" formatted configuration files.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 =head1 SYNOPSIS
@@ -29,6 +29,9 @@ our $VERSION = '0.01';
 
     # Fetch a specific key
     print $cfg->get('SOME_CONFIGURATON_KEY'), "\n";
+
+    # Fetch a specific key with leading-and-trailing quotes removed
+    print $cfg->get_tidy('SOME_CONFIGURATON_KEY'), "\n";
 
 =head1 FUNCTIONS
 
@@ -54,7 +57,22 @@ Get configuration value for I<key>.  Returns an empty string if I<key> is not de
 
 sub get {
   my ($self, $key) = @_;
-  return $self->{CONFIG}{ $key } || "";
+  return $self->{CONFIG}{ $key } || '';
+}
+
+=head2 get_tidy(key)
+
+Get configuration value for I<key>, stripping leading and trailing matching quote characters
+(e.g. I<'>, I<">).  Returns an empty string if I<key> is not defined.
+
+=cut
+
+sub get_tidy {
+  my ($self, $key) = @_;
+  my $value = $self->{CONFIG}{ $key } || '';
+  $value =~ s/^'(.+)'$/$1/; # Trim matched single quotes
+  $value =~ s/^"(.+)"$/$1/; # Trim matched double quotes
+  return $value;
 }
 
 =head2 load_file(file_name)
@@ -85,7 +103,7 @@ sub load_file {
 
 =head1 AUTHOR
 
-blair christensen, C<< <blair at devclue.com> >>
+blair christensen, C<< <blair.christensen at gmail.com> >>
 
 
 =head1 BUGS

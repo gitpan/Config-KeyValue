@@ -5,3 +5,7 @@ one_key=multiple values
 
 trailing_comment=trailing comment value # ignore 
 
+double_quoted="this value is double quoted"
+mixed_quotes='this value has mixed quotes"
+single_quoted='this value is single quoted'
+
